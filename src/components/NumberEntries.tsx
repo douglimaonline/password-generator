@@ -15,16 +15,19 @@ const NumberEntries = (props: NumberEntriesProps) => {
 
   return (
     <div className="number-entries">
-      <select
-        value={props.value}
-        onChange={(e) => props.onChange(Number(e.target.value))}
-      >
-        {options.map((num) => (
-          <option key={num} value={num}>
-            {num}
-          </option>
-        ))}
-      </select>
+      <div className="select">
+        <select
+          value={props.value}
+          onChange={(e) => props.onChange(Number(e.target.value))}
+        >
+          {options.map((num) => (
+            <option key={num} value={num}>
+              {num}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <p>{props.text}</p>
     </div>
   )
