@@ -16,7 +16,7 @@ export const shuffleString = (str: string): string => {
   return arr.join('')
 }
 
-export function characterDistribution(
+export const characterDistribution = (
   totalChar: number,
   symbols: string | undefined,
   addCapitalLetters: boolean,
@@ -26,7 +26,7 @@ export function characterDistribution(
   totalCapitalLetters: number
   totalNumbers: number
   totalLowerLetters: number
-} {
+} => {
   const totalSymbols = symbols ? Math.floor(totalChar * 0.2) : 0
   const totalCapitalLetters = addCapitalLetters
     ? Math.floor(totalChar * 0.3)
@@ -41,4 +41,12 @@ export function characterDistribution(
     totalNumbers,
     totalLowerLetters,
   }
+}
+
+export const getUniqueSpecials = (input: string) => {
+  const onlySpecialChars = input.replace(/[a-zA-Z0-9\s]/g, '')
+  const uniqueSpeciaChars = Array.from(
+    new Set(onlySpecialChars.split(''))
+  ).join('')
+  return uniqueSpeciaChars
 }
