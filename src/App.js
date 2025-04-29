@@ -23,10 +23,16 @@ function App() {
     })
   }
 
+  const handleClickCopyButton = () => navigator.clipboard.writeText(password)
+
   return (
     <div className="App">
       <Card>
-        <Password result={password} handleClick={handleClick} />
+        <Password
+          result={password}
+          handleClick={handleClick}
+          handleClickCopyButton={handleClickCopyButton}
+        />
         <NumberEntries
           text="Comprimento da Senha"
           value={totalChar}

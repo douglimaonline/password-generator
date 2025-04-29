@@ -13,6 +13,7 @@ interface OptionsProps {
 const Options = (props: Readonly<OptionsProps>) => {
   const handleOnChange = (input: string) => {
     const symbols = getUniqueSpecials(input)
+    if (symbols.length === 0) return
     props.onChangeSymbols(symbols)
   }
 
