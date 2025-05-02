@@ -5,6 +5,7 @@ import Card from './components/Card'
 import Password from './components/Password'
 import NumberEntries from './components/NumberEntries'
 import Options from './components/Options'
+import SnackBar from './components/SnackBar'
 
 function App() {
   const { password, generatePassword } = usePasswordGenerator()
@@ -12,6 +13,7 @@ function App() {
   const [addCapitalLetters, setAddCapitalLetters] = useState(true)
   const [addNumbers, setAddNumbers] = useState(true)
   const [addSymbols, setAddSymbols] = useState(true)
+  const [showSnackBar, setShowSnackBar] = useState(false)
   const [symbols, setSymbols] = useState("!#$%&'()*+,-./:;<=>?@][^_`{|}~")
 
   const handleClick = () => {
@@ -23,7 +25,13 @@ function App() {
     })
   }
 
-  const handleClickCopyButton = () => navigator.clipboard.writeText(password)
+  const handleClickCopyButton = () => {
+    navigator.clipboard.writeText(password)
+    setShowSnackBar(true)
+    setTimeout(() => {
+      setShowSnackBar(false)
+    }, 3000)
+  }
 
   return (
     <div className="App">
@@ -57,6 +65,7 @@ function App() {
           />
         </div>
       </Card>
+      <SnackBar showSnackBar={showSnackBar} />
     </div>
   )
 }
