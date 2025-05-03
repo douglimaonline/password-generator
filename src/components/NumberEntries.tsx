@@ -27,8 +27,6 @@ const NumberEntries = (props: NumberEntriesProps) => {
           ))}
         </select>
       </div>
-
-      <p>{props.text}</p>
     </div>
   )
 }

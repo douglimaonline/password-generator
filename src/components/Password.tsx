@@ -3,7 +3,6 @@ import '../styles/Password.css'
 
 interface PasswordProps {
   result: string
-  handleClick: () => void
   handleClickCopyButton: () => void
 }
 
@@ -14,7 +13,6 @@ const Password = (props: Readonly<PasswordProps>) => {
         <span>{props.result}</span>
       </div>
       <div className="buttons">
-        <button onClick={props.handleClick}>Gerar</button>
         <button onClick={props.handleClickCopyButton}>Copiar</button>
       </div>
     </div>

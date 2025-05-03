@@ -4,6 +4,7 @@ import { usePasswordGenerator } from './hooks/usePasswordGenerator'
 import Card from './components/Card'
 import Password from './components/Password'
 import NumberEntries from './components/NumberEntries'
+import GenerateButton from './components/GenerateButton'
 import Options from './components/Options'
 import SnackBar from './components/SnackBar'
 
@@ -36,17 +37,11 @@ function App() {
   return (
     <div className="App">
       <Card>
-        <Password
-          result={password}
-          handleClick={handleClick}
-          handleClickCopyButton={handleClickCopyButton}
-        />
-        <NumberEntries
-          text="Comprimento da Senha"
-          value={totalChar}
-          onChange={(newTotal) => setTotalChar(newTotal)}
-        />
         <div style={{ display: 'flex', width: '100%', gap: '1rem' }}>
+          <NumberEntries
+            value={totalChar}
+            onChange={(newTotal) => setTotalChar(newTotal)}
+          />
           <Options
             text="A-Z"
             value={addCapitalLetters}
@@ -64,6 +59,12 @@ function App() {
             onChangeSymbols={(e) => setSymbols(e)}
           />
         </div>
+        <GenerateButton handleClick={handleClick} />
+        <Password
+          result={password}
+          handleClick={handleClick}
+          handleClickCopyButton={handleClickCopyButton}
+        />
       </Card>
       <SnackBar showSnackBar={showSnackBar} />
     </div>
