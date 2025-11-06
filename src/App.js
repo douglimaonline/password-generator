@@ -10,7 +10,7 @@ import SnackBar from './components/SnackBar'
 
 function App() {
   const { password, generatePassword } = usePasswordGenerator()
-  const [totalChar, setTotalChar] = useState(12)
+  const [totalChar, setTotalChar] = useState(6)
   const [addCapitalLetters, setAddCapitalLetters] = useState(true)
   const [addNumbers, setAddNumbers] = useState(true)
   const [addSymbols, setAddSymbols] = useState(true)

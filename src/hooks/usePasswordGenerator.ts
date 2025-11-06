@@ -1,9 +1,9 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback } from "react"
 import {
   characterDistribution,
   randomizer,
   shuffleString,
-} from './utils/helpers'
+} from "./utils/helpers"
 
 interface UsePasswordGeneratorProps {
   totalChar: number
@@ -13,12 +13,12 @@ interface UsePasswordGeneratorProps {
 }
 
 const usePasswordGenerator = () => {
-  const [password, setPassword] = useState('ev$Y8Pg$oS5#6F')
+  const [password, setPassword] = useState("ev$Y8Pg$oS5#6F")
 
   const generatePassword = useCallback((props: UsePasswordGeneratorProps) => {
-    const lowerLetters = 'abcdefghijklmnopqrstuvwxyz'
-    const upperLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    const numbers = '0123456789'
+    const lowerLetters = "abcdefghijklmnopqrstuvwxyz"
+    const upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    const numbers = "0123456789"
 
     const { totalChar, symbols, addCapitalLetters, addNumbers } = props
     const {
@@ -28,18 +28,20 @@ const usePasswordGenerator = () => {
       totalSymbols,
     } = characterDistribution(totalChar, symbols, addCapitalLetters, addNumbers)
 
-    const randNumbers = addNumbers ? randomizer(totalNumbers, numbers) : ''
-    const randSymbols = symbols ? randomizer(totalSymbols, symbols) : ''
+    const randNumbers = addNumbers ? randomizer(totalNumbers, numbers) : ""
+    const randSymbols = symbols ? randomizer(totalSymbols, symbols) : ""
     const randUpperLetters = addCapitalLetters
       ? randomizer(totalCapitalLetters, upperLetters)
-      : ''
+      : ""
     const randLowerLetters = randomizer(
       Math.floor(totalLowerLetters),
       lowerLetters
     )
 
     const newPassword =
-      randSymbols + randLowerLetters + randUpperLetters + randNumbers
+      addNumbers && !addCapitalLetters && !symbols
+        ? randomizer(totalChar, numbers)
+        : randSymbols + randLowerLetters + randUpperLetters + randNumbers
     setPassword(shuffleString(newPassword))
   }, [])
 
