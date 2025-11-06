@@ -37,7 +37,7 @@ function App() {
   return (
     <div className="App">
       <Card>
-        <div style={{ display: 'flex', width: '100%', gap: '1rem' }}>
+        <div style={{ display: 'flex', width: '100%', gap: '1rem' }} className='options-container'>
           <NumberEntries
             value={totalChar}
             onChange={(newTotal) => setTotalChar(newTotal)}
