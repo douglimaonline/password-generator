@@ -8,7 +8,7 @@ interface CardProps {
 const Card = (props: Readonly<CardProps>) => {
   return (
     <div className="card">
-      <img src="/lock.png" alt="lock"></img>
+      <img src={process.env.PUBLIC_URL + '/lock.png'} alt="lock" />
       {props.children}
     </div>
   )
